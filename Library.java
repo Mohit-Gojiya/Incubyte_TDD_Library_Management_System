@@ -6,6 +6,7 @@ public class Library {
     String Name;
 
     private final Map<String,Book> Book_Inventory;
+    private final Map<String, User> User_Catalog;
 
     public Library (String Name)
     {
@@ -13,6 +14,7 @@ public class Library {
         { throw new IllegalArgumentException("Library Name Should not be null"); }
         this.Name = Name;
         this.Book_Inventory = new HashMap<String, Book>();
+        this.User_Catalog = new HashMap<String, User>();
     }
 
     public void addBook(User user , Book book) throws Exception {
@@ -28,4 +30,11 @@ public class Library {
         return Book_Inventory.get(Isbn);
     };
 
+    public void addUser(User user) {
+       User_Catalog.put(user.getUserName(),user);
+    }
+
+    public User getUserByName(String username) {
+        return User_Catalog.get(username);
+    }
 }
