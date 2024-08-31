@@ -47,5 +47,15 @@ class LibraryTest {
         assertEquals(book, storedBook);
     }
 
+    @Test
+    public void test_ShouldAddUser_ToLibrary() {
+        Library library = new Library("LD_College_Library");
+        User librarian = new User("Mohit", User.Role.LIBRARIAN);
+
+        library.addUser(librarian);
+
+        User user = library.getUserByName("Mohit");
+        assertEquals(librarian, user);
+    }
 
 }
