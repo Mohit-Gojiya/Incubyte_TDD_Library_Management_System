@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +43,6 @@ public class Library {
     };
 
     public Map<String,Book> viewAvailableBooks() {
-    return new HashMap<>(Book_Inventory);
+    return Collections.unmodifiableMap(new HashMap<>(Book_Inventory));
     };
 }

@@ -81,7 +81,7 @@ class LibraryTest {
     }
 
     @Test
-    public void testShouldRetrieveAllAvailableBooks() throws Exception {
+    public void test_ShouldRetrieve_AllAvailableBooks() throws Exception {
         User librarian = new User("Mohit", User.Role.LIBRARIAN);
         Book book1 = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", Year.of(2012));
         Book book2 = new Book("9780134685991", "Effective Java", "Joshua Bloch", Year.of(2018));
@@ -95,5 +95,18 @@ class LibraryTest {
         assertEquals(2, availableBooks.size());
         assertTrue(availableBooks.containsKey("9780132350884"));
         assertTrue(availableBooks.containsKey("9780134685991"));
+    }
+
+    @Test
+    public void test_ShouldReturn_Immuitable_HashMap() throws Exception {
+        User librarian = new User("Mohit", User.Role.LIBRARIAN);
+        Book book1 = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", Year.of(2012));
+
+        library.addUser(librarian);
+        library.addBook(librarian, book1);
+
+        Map<String, Book> availableBooks = library.viewAvailableBooks();
+
+        assertThrows(UnsupportedOperationException.class, () -> availableBooks.put("9780134685991", new Book("9780134685991", "Effective Java", "Joshua Bloch", Year.of(2018))));
     }
 }
