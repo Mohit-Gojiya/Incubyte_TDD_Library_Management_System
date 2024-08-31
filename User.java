@@ -1,8 +1,13 @@
 public class User {
 
+    public enum Role {
+        LIBRARIAN,
+        USER
+    }
+
     String UserName;
-    String UserRole;
-    public User(String UserName, String UserRole) {
+    private Role UserRole;
+    public User(String UserName, Role UserRole) {
         this.UserName = UserName;
         this.UserRole = UserRole;
     }
@@ -11,11 +16,11 @@ public class User {
         return UserName;
     }
 
-    public String getUserRole() {
+    public Role getUserRole() {
         return UserRole;
     }
 
     public boolean isPermittedToAddBook() {
-        return "Librarian".equalsIgnoreCase(UserRole);
+        return UserRole == Role.LIBRARIAN;
     }
 }

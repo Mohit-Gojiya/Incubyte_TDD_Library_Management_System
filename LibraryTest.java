@@ -34,7 +34,7 @@ class LibraryTest {
         Library library = new Library("LD_College_Library");
 
         Book book = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", Year.of(2012));
-        User user = new User("Mohit", "librarian");
+        User user = new User("Mohit", User.Role.LIBRARIAN);
         library.addBook(user,book);
 
         Book storedBook = library.get_Isbn_from_Library_Inventory("9780132350884");
