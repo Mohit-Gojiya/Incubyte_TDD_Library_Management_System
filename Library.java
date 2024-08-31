@@ -66,4 +66,8 @@ public class Library {
     public Book getBookByISBN(String Isbn) {
         return Book_Inventory.get(Isbn);
     };
+
+    public String getBorrowerNameByISBN(String Isbn) {
+        return BorrowedBooks.get(Isbn);
+    }
 }
