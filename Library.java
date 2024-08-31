@@ -4,7 +4,7 @@ public class Library {
 
     public Library (String Name)
     {
-        if (Name == null || Name.isEmpty() )
+        if (Name == null || Name.isEmpty() || Name.length() <= 3)
         { throw new IllegalArgumentException("Library Name Should not be null"); }
         this.Name = Name;
     }
