@@ -52,7 +52,10 @@ public class Library {
     public void borrowBook(User user, String Isnb) {
 
         Book book = Book_Inventory.get(Isnb);
-        if (book != null) {
+        if (BorrowedBooks.containsKey(Isnb)){
+            throw new IllegalArgumentException("Book is already borrowed");
+        }
+        if (book != null ) {
             BorrowedBooks.put(Isnb, user.getUserName());
             Book_Inventory.remove(Isnb);
         }
