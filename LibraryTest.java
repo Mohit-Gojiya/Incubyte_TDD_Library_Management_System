@@ -30,7 +30,7 @@ class LibraryTest {
     }
 
     @Test
-    public void test_ShouldAddBook_ToLibrary_ByOnlyPermittedUser() {
+    public void test_ShouldAddBook_ToLibrary_ByOnlyPermittedUser() throws Exception {
         Library library = new Library("LD_College_Library");
 
         Book book = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", Year.of(2012));
