@@ -30,11 +30,12 @@ class LibraryTest {
     }
 
     @Test
-    public void test_ShouldAddBook_ToLibrary() {
+    public void test_ShouldAddBook_ToLibrary_ByOnlyPermittedUser() {
         Library library = new Library("LD_College_Library");
 
         Book book = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", Year.of(2012));
-        library.addBook(book);
+        User user = new User("Mohit", "librarian");
+        library.addBook(user,book);
 
         Book storedBook = library.get_Isbn_from_Library_Inventory("9780132350884");
 
@@ -45,5 +46,6 @@ class LibraryTest {
         assertEquals(Year.of(2012), storedBook.getYear());
         assertEquals(book, storedBook);
     }
+
 
 }

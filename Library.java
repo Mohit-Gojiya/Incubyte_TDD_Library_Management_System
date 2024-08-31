@@ -15,11 +15,17 @@ public class Library {
         this.Book_Inventory = new HashMap<String, Book>();
     }
 
-    public void addBook(Book book) {
-       Book_Inventory.put(book.getIsbn(),book);
+    public void addBook(User user , Book book) {
+       if (user.isPermittedToAddBook()) {
+           Book_Inventory.put(book.getIsbn(), book);
+       }
+       else {
+           throw new SecurityException("You are not authorized to add book");
+       }
     }
 
     public Book get_Isbn_from_Library_Inventory(String Isbn) {
         return Book_Inventory.get(Isbn);
     };
+
 }
