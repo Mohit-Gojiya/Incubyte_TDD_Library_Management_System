@@ -109,4 +109,20 @@ class LibraryTest {
 
         assertThrows(UnsupportedOperationException.class, () -> availableBooks.put("9780134685991", new Book("9780134685991", "Effective Java", "Joshua Bloch", Year.of(2018))));
     }
+
+    @Test
+    public void test_ShouldAllow_ToBorrowBook_FromLibrary() throws Exception {
+        User librarian = new User("Mohit", User.Role.LIBRARIAN);
+        User user = new User("Mohit", User.Role.USER);
+        Book book = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", Year.of(2012));
+
+        library.addUser(librarian);
+        library.addUser(user);
+        library.addBook(librarian, book);
+
+        library.borrowBook(user, "9780132350884");
+
+        Book borrowedBook = library.getBookByISBN("9780132350884");
+        assertNull(borrowedBook, "borrowedBook should be null as it has been borrowed earlier.");
+    }
 }
