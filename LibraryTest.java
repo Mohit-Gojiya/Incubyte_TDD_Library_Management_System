@@ -125,4 +125,15 @@ class LibraryTest {
         Book borrowedBook = library.getBookByISBN("9780132350884");
         assertNull(borrowedBook, "borrowedBook should be null as it has been borrowed earlier.");
     }
+
+    @Test
+    public void test_ShouldThrowException_WhenBookNotFoundDuring_BorrowRequest() {
+
+        User user = new User("Mohit", User.Role.USER);
+
+        library.addUser(user);
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> library.borrowBook(user, "9780132350884"));
+        assertEquals("Book not found", exception.getMessage());
+    }
 }
