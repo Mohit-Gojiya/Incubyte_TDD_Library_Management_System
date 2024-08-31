@@ -15,7 +15,7 @@ public class Library {
         this.Name = Name;
         this.Book_Inventory = new HashMap<String, Book>();
         this.User_Catalog = new HashMap<String, User>();
-    }
+    };
 
     public void addBook(User user , Book book) throws Exception {
        if (user.isPermittedToAddBook()) {
@@ -24,7 +24,7 @@ public class Library {
        else {
            throw new Exception("You are not authorized to add book");
        }
-    }
+    };
 
     public Book get_Isbn_from_Library_Inventory(String Isbn) {
         return Book_Inventory.get(Isbn);
@@ -35,9 +35,13 @@ public class Library {
             throw new IllegalArgumentException("User already exists in catalog");
         }
        User_Catalog.put(user.getUserName(),user);
-    }
+    };
 
     public User getUserByName(String username) {
         return User_Catalog.get(username);
-    }
+    };
+
+    public Map<String,Book> viewAvailableBooks() {
+    return new HashMap<>(Book_Inventory);
+    };
 }
