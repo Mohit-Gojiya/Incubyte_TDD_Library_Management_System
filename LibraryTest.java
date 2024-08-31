@@ -113,7 +113,7 @@ class LibraryTest {
     @Test
     public void test_ShouldAllow_ToBorrowBook_FromLibrary() throws Exception {
         User librarian = new User("Mohit", User.Role.LIBRARIAN);
-        User user = new User("Mohit", User.Role.USER);
+        User user = new User("Milan", User.Role.USER);
         Book book = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", Year.of(2012));
 
         library.addUser(librarian);

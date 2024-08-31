@@ -7,7 +7,9 @@ public class Library {
     String Name;
 
     private final Map<String,Book> Book_Inventory;
-    private final Map<String, User> User_Catalog;
+    private final Map<String,User> User_Catalog;
+    private final Map<String,String> BorrowedBooks;
+
 
     public Library (String Name)
     {
@@ -16,6 +18,7 @@ public class Library {
         this.Name = Name;
         this.Book_Inventory = new HashMap<String, Book>();
         this.User_Catalog = new HashMap<String, User>();
+        this.BorrowedBooks = new HashMap<String,String>();
     };
 
     public void addBook(User user , Book book) throws Exception {
@@ -44,5 +47,17 @@ public class Library {
 
     public Map<String,Book> viewAvailableBooks() {
     return Collections.unmodifiableMap(new HashMap<>(Book_Inventory));
+    };
+
+    public void borrowBook(User user, String Isnb) {
+
+        Book book = Book_Inventory.get(Isnb);
+        BorrowedBooks.put(Isnb, user.getUserName());
+        Book_Inventory.remove(Isnb);
+
+    };
+
+    public Book getBookByISBN(String Isbn) {
+        return Book_Inventory.get(Isbn);
     };
 }
