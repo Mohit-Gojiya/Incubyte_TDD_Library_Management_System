@@ -43,6 +43,7 @@ class LibraryTest {
         assertEquals("Clean Code", storedBook.getTitle());
         assertEquals("Robert Cecil Martin", storedBook.getAuthor());
         assertEquals(Year.of(2012), storedBook.getYear());
+        assertEquals(book, storedBook);
     }
 
 }

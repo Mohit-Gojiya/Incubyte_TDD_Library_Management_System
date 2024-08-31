@@ -30,4 +30,17 @@ public class Book {
         return Year;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if(this == object) return true;
+        if(object == null || (this.getClass() != object.getClass())) return false;
+        Book book = (Book) object;
+        return Isbn.equals(book.Isbn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Isbn.hashCode();
+    }
+
 }
