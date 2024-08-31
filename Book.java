@@ -8,6 +8,20 @@ public class Book {
     java.time.Year Year;
 
     public Book(String ISBN, String TITLE, String AUTHOR, Year PUBLICATION_YEAR) {
+
+        if(ISBN == null || ISBN.isBlank()){
+            throw new IllegalArgumentException("ISBN should not be null or empty");
+        }
+        if(TITLE == null || TITLE.isBlank()){
+            throw new IllegalArgumentException("title should not be null or empty");
+        }
+        if(AUTHOR == null || AUTHOR.isBlank()){
+            throw new IllegalArgumentException("author should not be null or empty");
+        }
+        if(PUBLICATION_YEAR == null){
+            throw new IllegalArgumentException("publication year should not be null");
+        }
+
         this.Isbn = ISBN;
         this.Title = TITLE;
         this.Author = AUTHOR;
