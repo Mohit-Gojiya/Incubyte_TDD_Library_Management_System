@@ -9,6 +9,7 @@ public class Library {
     private final Map<String,Book> Book_Inventory;
     private final Map<String,User> User_Catalog;
     private final Map<String,String> BorrowedBooks;
+    private final Map<String, Book> BorrowedBookDetails;
 
 
     public Library (String Name)
@@ -19,6 +20,7 @@ public class Library {
         this.Book_Inventory = new HashMap<String, Book>();
         this.User_Catalog = new HashMap<String, User>();
         this.BorrowedBooks = new HashMap<String,String>();
+        this.BorrowedBookDetails = new HashMap<String, Book>();
     };
 
     public void addBook(User user , Book book) throws Exception {
@@ -49,15 +51,16 @@ public class Library {
     return Collections.unmodifiableMap(new HashMap<>(Book_Inventory));
     };
 
-    public void borrowBook(User user, String Isnb) {
+    public void borrowBook(User user, String Isbn) {
 
-        Book book = Book_Inventory.get(Isnb);
-        if (BorrowedBooks.containsKey(Isnb)){
+        Book book = Book_Inventory.get(Isbn);
+        if (BorrowedBooks.containsKey(Isbn)){
             throw new IllegalArgumentException("Book is already borrowed");
         }
         if (book != null ) {
-            BorrowedBooks.put(Isnb, user.getUserName());
-            Book_Inventory.remove(Isnb);
+            BorrowedBooks.put(Isbn, user.getUserName());
+            BorrowedBookDetails.put(Isbn, book);
+            Book_Inventory.remove(Isbn);
         }
         else throw new IllegalArgumentException("Book not found");
 
@@ -69,5 +72,13 @@ public class Library {
 
     public String getBorrowerNameByISBN(String Isbn) {
         return BorrowedBooks.get(Isbn);
+    }
+
+    public void returnBook(User user, String Isbn) {
+        Book book = BorrowedBookDetails.get(Isbn);
+        Book_Inventory.put(Isbn,book);
+        BorrowedBooks.remove(Isbn);
+        BorrowedBookDetails.remove(Isbn);
+
     }
 }
