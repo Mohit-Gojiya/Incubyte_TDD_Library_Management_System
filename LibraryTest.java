@@ -9,4 +9,9 @@ class LibraryTest {
         assertThrows(IllegalArgumentException.class, () -> new Library(null));
     }
 
+    @Test
+    public void test_LibraryName_ShouldNot_BeNull_AndEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> new Library(" "));
+    }
+
 }
