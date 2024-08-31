@@ -49,7 +49,7 @@ class LibraryTest {
 
     @Test
     public void test_ShouldAddUser_ToLibrary() {
-        Library library = new Library("LD_College_Library");
+        
         User librarian = new User("Mohit", User.Role.LIBRARIAN);
 
         library.addUser(librarian);
@@ -60,7 +60,7 @@ class LibraryTest {
 
     @Test
     public void test_ShouldNot_AllowDuplicateUsers() {
-        Library library = new Library("LD_College_Library");
+
         User primaryLibrarian = new User("Mohit", User.Role.LIBRARIAN);
         User secondaryLibrarian = new User("Mohit", User.Role.LIBRARIAN);
 
@@ -71,7 +71,7 @@ class LibraryTest {
 
     @Test
     public void test_ShouldFetchUser_ByUsername() {
-        Library library = new Library("LD_College_Library");
+
         User primaryLibrarian = new User("Mohit", User.Role.LIBRARIAN);
 
         library.addUser(primaryLibrarian);
