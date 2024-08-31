@@ -138,7 +138,7 @@ class LibraryTest {
     }
 
     @Test
-    public void testShouldThrowExceptionWhenBookIsAlreadyBorrowed() throws Exception {
+    public void test_ShouldThrowException_WhenBook_IsAlreadyBorrowed() throws Exception {
 
         User librarian = new User("Mohit", User.Role.LIBRARIAN);
         User user1 = new User("Milan", User.Role.USER);
@@ -154,6 +154,23 @@ class LibraryTest {
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> library.borrowBook(user2, "9780132350884"));
         assertEquals("Book is already borrowed", exception.getMessage());
+    }
+
+    @Test
+    public void test_ShouldReturn_BorrowerName_WhoBorrowedBook() throws Exception {
+        User librarian = new User("Mohit", User.Role.LIBRARIAN);
+        User user = new User("Milan", User.Role.USER);
+        Book book = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", Year.of(2012));
+
+        library.addUser(librarian);
+        library.addUser(user);
+        library.addBook(librarian, book);
+
+        library.borrowBook(user, "9780132350884");
+
+        String borrowerName = library.getBorrowerNameByISBN("9780132350884");
+
+        assertEquals(user.getUserName(), borrowerName);
     }
 
 }
