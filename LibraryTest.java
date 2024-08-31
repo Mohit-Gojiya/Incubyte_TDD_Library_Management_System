@@ -27,4 +27,20 @@ class LibraryTest {
         assertThrows(IllegalArgumentException.class, () -> new Library("ABC"));
     }
 
+    @Test
+    public void test_ShouldAddBook_ToLibrary() {
+        Library library = new Library("LD_College_Library");
+
+        Book book = new Book("9780132350884", "Clean Code", "Robert Cecil Martin", 2012);
+        library.addBook(book);
+
+        Book storedBook = getBookByISBN("9780132350884");
+
+        assertNotNull(storedBook);
+        assertEquals("9780132350884", storedBook.getISBN());
+        assertEquals("Clean Code", storedBook.getTitle());
+        assertEquals("9Robert Cecil Martin", storedBook.getAuthor());
+        assertEquals(2012, storedBook.getPublicationYear());
+    }
+
 }
