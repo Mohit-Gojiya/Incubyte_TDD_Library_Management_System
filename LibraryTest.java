@@ -222,4 +222,10 @@ class LibraryTest {
         assertEquals("Book was not borrowed by any user", exception.getMessage());
     }
 
+    @Test
+    public void test_ShouldThrow_Exception_IfUserIsNull() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> library.addUser(null));
+        assertEquals("User should not be null", exception.getMessage());
+    }
+
 }
