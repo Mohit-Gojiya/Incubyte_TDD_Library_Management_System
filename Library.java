@@ -91,14 +91,16 @@ public class Library {
     public void returnBook(User user, String Isbn) {
         Book book = BorrowedBookDetails.get(Isbn);
 
-
-        if (user.getUserName() == BorrowedBooks.get(Isbn))
+        if (BorrowedBooks.containsKey(Isbn))
         {
-            Book_Inventory.put(Isbn, book);
-            BorrowedBooks.remove(Isbn);
-            BorrowedBookDetails.remove(Isbn);
+            if (user.getUserName() == BorrowedBooks.get(Isbn))
+            {
+                Book_Inventory.put(Isbn, book);
+                BorrowedBooks.remove(Isbn);
+                BorrowedBookDetails.remove(Isbn);
+            }
+            else throw new IllegalArgumentException("book was not borrowed by this user");
         }
-        else throw new IllegalArgumentException("book was not borrowed by this user");
-
+        else throw  new IllegalArgumentException("Book was not borrowed by any user");
     }
 }
