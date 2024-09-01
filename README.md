@@ -8,11 +8,11 @@ Welcome to my solution for the Library Management Kata! This repository showcase
 - [Solution](#solution)
 - [Features](#features)
 - [Setup Instructions](#setup-instructions)
-  - [Prerequisites]
-  - [Clone the Repository]
-  - [Import Project into IntelliJ IDEA]
-  - [Build the Project]
-  - [Running Tests]
+  - Prerequisites
+  - Clone the Repository
+  - Import Project into IntelliJ IDEA
+  - Build the Project
+  - Running Tests
 - [Test Coverage](#test-coverage)
 
 ## Problem Statement
@@ -95,6 +95,6 @@ This project follows TDD principles to solve the kata problem. The solution is b
 
 The current test coverage of this project is **96%**
 
-![image](https://github.com/user-attachments/assets/5714a387-b906-4158-b0ec-449e48f0a745)
+![Test Coverage Screenshot](https://github.com/user-attachments/assets/5714a387-b906-4158-b0ec-449e48f0a745)
 
 
