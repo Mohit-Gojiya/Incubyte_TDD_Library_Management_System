@@ -34,6 +34,7 @@ public class Library {
 
     public void addUser(User user)
     {
+        if (user == null) { throw new IllegalArgumentException("User should not be null");}
         if (User_Catalog.containsKey(user.getUserName()))
         { throw new IllegalArgumentException("User already exists in catalog"); }
         User_Catalog.put(user.getUserName(), user);
